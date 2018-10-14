@@ -5,18 +5,23 @@
  */
 package Interface;
 
+import Controladoras.CtrlPedido;
 import Controladoras.CtrlPessoa;
+import Sessao.Sessao;
 import Utils.BuscaCEP;
 import Utils.Controladora.CtrlUtils;
 import Utils.Endereço;
 import Utils.MaskFieldUtil;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -32,8 +37,6 @@ import javafx.scene.layout.VBox;
  */
 public class TelaEnviarController implements Initializable {
 
-    @FXML
-    private JFXButton btnBuscarDestinatario;
     @FXML
     private JFXTextField txNomeDest;
     @FXML
@@ -68,6 +71,8 @@ public class TelaEnviarController implements Initializable {
     private JFXButton btnSalvar;
     @FXML
     private VBox pndados;
+    @FXML
+    private JFXComboBox<Object> cbUsu;
 
     /**
      * Initializes the controller class.
@@ -76,8 +81,12 @@ public class TelaEnviarController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) 
     {
         MaskFieldUtil.cepField(txCepDest);
-        MaskFieldUtil.numericField(txNumDest);
+        //MaskFieldUtil.numericField(txNumDest);
         MaskFieldUtil.numericField(txPeso);
+        
+        cbUsu.getItems().addAll(CtrlPessoa.create().Pesquisar(""));
+        cbUsu.getItems().remove(Sessao.getIndividuo());
+        //cbUsu.getSelectionModel().selectFirst();
     }    
     
     private void EstadoOriginal() {
@@ -110,7 +119,6 @@ public class TelaEnviarController implements Initializable {
         }
     }
 
-    @FXML
     private void evtBuscarDestinatario(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Aviso Busca Destinatário!!!");
@@ -148,6 +156,9 @@ public class TelaEnviarController implements Initializable {
         setAllErro(false);
         if (validaCampos()) {
             System.out.println("Valido");
+            CtrlPedido ctrl = CtrlPedido.create();
+            CtrlPessoa pessoa = CtrlPessoa.create();
+            ctrl.Salvar(txMedidas.getText(), new BigDecimal(Double.parseDouble(txPeso.getText())), false, Sessao.getIndividuo(), txRuaDest, ctrl, event);
         }
     }
     
@@ -247,6 +258,16 @@ public class TelaEnviarController implements Initializable {
             txCidadeDest.setText("");
             txRuaDest.setText("");
             txUFDest.setText("");
+        }
+    }
+
+    @FXML
+    private void evtEscolha(Event event) 
+    {
+        if(cbUsu.getSelectionModel().getSelectedItem() != null)
+        {
+            CtrlPessoa.setCampos(cbUsu.getSelectionModel().getSelectedItem(), txCepDest, txNumDest);
+            evtBuscaCEP(null);
         }
     }
     
