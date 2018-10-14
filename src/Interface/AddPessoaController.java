@@ -53,6 +53,7 @@ public class AddPessoaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         MaskFieldUtil.cpfCnpjField(txbcpf_cnpj);
+        //MaskFieldUtil.
         EstadoOriginal();
     }
 

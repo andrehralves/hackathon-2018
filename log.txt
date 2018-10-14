@@ -1,1 +1,2 @@
-Sun Oct 14 10:27:05 BRT 2018:  Envio do produto cadastrado com sucesso !
+Sun Oct 14 13:41:24 BRT 2018:  Envio do produto cadastrado com sucesso !
+Sun Oct 14 13:41:47 BRT 2018:  Você não possui um veículo cadastrado !
