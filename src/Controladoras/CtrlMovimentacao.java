@@ -38,12 +38,27 @@ public class CtrlMovimentacao extends CtrlBase {
     public CtrlMovimentacao() {
         super(Transaction.getEntityManagerFactory());
     }
+    
+    public int getIdMotorista(Object movimentacao)
+    {
+        return ((Movimentacao)movimentacao).getPessoaMotoristaId().getPessoaId();
+    }
 
     public static void setCampos(Object movimentacao, TextArea taObs) {
         if (movimentacao != null && movimentacao instanceof Movimentacao) {
             Movimentacao f = (Movimentacao) movimentacao;
             //////taObs.setText(f.getDetalhes());
         }
+    }
+    
+    public String getMedidas(Object movimentacao)
+    {
+        return ((Movimentacao)movimentacao).getPedidoId().getMedida();
+    }
+    
+    public String getPeso(Object movimentacao)
+    {
+        return ((Movimentacao)movimentacao).getPedidoId().getPeso().toString();
     }
 
     public static BufferedImage getImagem(Object p) {

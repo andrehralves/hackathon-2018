@@ -56,6 +56,10 @@ public class TelaEnviarController implements Initializable {
     @FXML
     private JFXTextField txMedidas;
     @FXML
+    private VBox pndados;
+    @FXML
+    private JFXComboBox<Object> cbUsu;
+    @FXML
     private JFXTextArea txObs;
     @FXML
     private JFXButton btnCarregarFotos;
@@ -69,10 +73,6 @@ public class TelaEnviarController implements Initializable {
     private JFXButton btnVisualizarMotoristas;
     @FXML
     private JFXButton btnSalvar;
-    @FXML
-    private VBox pndados;
-    @FXML
-    private JFXComboBox<Object> cbUsu;
 
     /**
      * Initializes the controller class.
@@ -273,5 +273,6 @@ public class TelaEnviarController implements Initializable {
             evtBuscaCEP(null);
         }
     }
+
     
 }

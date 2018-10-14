@@ -38,6 +38,7 @@
                               <Label fx:id="opcEditarPerfil" onMouseClicked="#evtEditarPerfil" text="Editar Perfil" />
                               <Label onMouseClicked="#evtPedidos" text="Pedidos" />
                               <Label fx:id="opcSolicitarEntrega" onMouseClicked="#evtSolicitarEntrega" text="Enviar Produtos" />
+                              <Label onMouseClicked="#evtEfetuarEntrega" text="Efetuar Entrega" />
                               <Label fx:id="opcSair" onMouseClicked="#evtSair" text="Sair" />
                            </children>
                         </VBox>

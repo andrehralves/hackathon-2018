@@ -104,5 +104,10 @@ public class PrincipalController implements Initializable {
         Variables._secaoPrincipal.push(this.getClass(), "/Interface/TelaTransportar.fxml");
     }
 
+    @FXML
+    private void evtEfetuarEntrega(MouseEvent event) {
+        Variables._secaoPrincipal.push(this.getClass(), "/Interface/TelaPagamento.fxml");
+    }
+
     
 }

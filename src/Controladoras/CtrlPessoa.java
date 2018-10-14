@@ -48,6 +48,11 @@ public class CtrlPessoa extends CtrlBase {
 
     }
     
+    public int getIdPessoa(Object pessoa)
+    {
+        return ((Pessoa)pessoa).getPessoaId();
+    }
+    
     public static Object getIdVeiculo(Object pessoa)
     {
         Pessoa p = (Pessoa)pessoa;

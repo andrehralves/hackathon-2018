@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="500.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.TelaPagamentoController">
+   <center>
+      <ScrollPane fitToWidth="true">
+         <content>
+            <VBox fx:id="pndados" alignment="CENTER" prefHeight="458.0" prefWidth="336.0" style="-fx-background-color: white;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="112.0" prefWidth="336.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <JFXDatePicker fx:id="dtpData" defaultColor="BLACK" overLay="true" promptText="Data de entrega" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="133.0" prefWidth="336.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <JFXComboBox fx:id="cbProd" labelFloat="true" onHidden="#evtEscolha" prefHeight="31.0" prefWidth="309.0" promptText="Código do Produto" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="122.0" prefWidth="336.0" spacing="20.0">
+                     <children>
+                        <JFXTextField fx:id="txPeso" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="174.0" promptText="Peso" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txMedidas" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="153.0" promptText="Medidas">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="57.0" prefWidth="336.0">
+                     <children>
+                        <JFXButton fx:id="btnEntregar" alignment="CENTER" onAction="#evtEntregar" prefHeight="25.0" prefWidth="296.0" style="-fx-background-color: #b9c0dd;" text="Entregar" HBox.hgrow="ALWAYS">
+                           <ripplerFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="338.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Entregar">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+         </children>
+         <padding>
+            <Insets bottom="7.0" top="7.0" />
+         </padding>
+      </HBox>
+   </top>
+</BorderPane>
