@@ -38,8 +38,6 @@ public class PrincipalController implements Initializable {
     @FXML
     private Label txUsuarioInterface;
     @FXML
-    private Label txNivelInterface;
-    @FXML
     private JFXHamburger hamburger;
     @FXML
     private HBox pndados;
@@ -51,6 +49,8 @@ public class PrincipalController implements Initializable {
     private Label opcSair;
     @FXML
     private VBox OptionsPane;
+    @FXML
+    private Label opcContato;
 
     /**
      * Initializes the controller class.
@@ -102,6 +102,11 @@ public class PrincipalController implements Initializable {
     @FXML
     private void evtPedidos(MouseEvent event) {
         Variables._secaoPrincipal.push(this.getClass(), "/Interface/TelaTransportar.fxml");
+    }
+
+    @FXML
+    private void evtContato(MouseEvent event) {
+        Variables._secaoPrincipal.push(this.getClass(), "/Interface/MessageChat.fxml");
     }
 
     
