@@ -36,6 +36,7 @@
                         <VBox fx:id="OptionsPane" alignment="TOP_CENTER" prefHeight="500.0" spacing="20.0">
                            <children>
                               <Label fx:id="opcEditarPerfil" onMouseClicked="#evtEditarPerfil" text="Editar Perfil" />
+                              <Label onMouseClicked="#evtPedidos" text="Pedidos" />
                               <Label fx:id="opcSolicitarEntrega" onMouseClicked="#evtSolicitarEntrega" text="Solicitar Entrega" />
                               <Label fx:id="opcSair" onMouseClicked="#evtSair" text="Sair" />
                            </children>

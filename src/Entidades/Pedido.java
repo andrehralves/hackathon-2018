@@ -154,6 +154,16 @@ public class Pedido extends JPADao implements Serializable {
     public void setPessoaOrigemId(Pessoa pessoaOrigemId) {
         this.pessoaOrigemId = pessoaOrigemId;
     }
+    
+    public String getOrigem()
+    {
+        return pessoaOrigemId.getCep();
+    }
+    
+    public String getDestino()
+    {
+        return pessoaDestinoId.getCep();
+    }
 
     public Pessoa getPessoaDestinoId() {
         return pessoaDestinoId;

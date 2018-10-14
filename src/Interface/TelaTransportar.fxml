@@ -14,34 +14,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane prefHeight="500.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.TelaTransportarController">
    <center>
-      <ScrollPane fitToWidth="true" prefHeight="466.0" prefWidth="338.0">
+      <ScrollPane fitToWidth="true" prefHeight="546.0" prefWidth="338.0">
          <content>
-            <VBox prefHeight="490.0" prefWidth="322.0">
+            <VBox prefHeight="608.0" prefWidth="319.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="322.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos na Proximidade" />
                      </children>
                   </HBox>
-                  <ScrollPane prefHeight="175.0" prefWidth="322.0">
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
                      <content>
-                        <TableView fx:id="tbProdProx" onSort="#evtClickProdProx" prefHeight="159.0" prefWidth="634.0">
+                        <TableView fx:id="tbProdProx" prefHeight="159.0" prefWidth="522.0">
                            <columns>
-                              <TableColumn fx:id="colInfo" prefWidth="162.0" text="Info. Produto" />
-                              <TableColumn fx:id="colLocalProd" prefWidth="125.0" text="Local Produto" />
+                              <TableColumn fx:id="colOrigem" prefWidth="125.0" text="Origem" />
                               <TableColumn fx:id="colDestino" prefWidth="125.0" text="Destino" />
-                              <TableColumn fx:id="colDistancia" prefWidth="125.0" text="Distância" />
-                              <TableColumn fx:id="colValorFrete" prefWidth="75.0" text="Valor Frete" />
+                              <TableColumn fx:id="colMedida" prefWidth="100.0" text="Medida" />
+                              <TableColumn fx:id="colPeso" prefWidth="75.0" text="Peso" />
+                              <TableColumn fx:id="colValorFrete" prefWidth="93.0" text="Valor Frete" />
                            </columns>
                         </TableView>
                      </content>
                   </ScrollPane>
                   <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
                      <children>
-                        <JFXButton fx:id="btnAddListDesejo" alignment="CENTER" prefHeight="25.0" prefWidth="296.0" style="-fx-background-color: #b9c0dd;" text="Add Lista Desejo" HBox.hgrow="ALWAYS">
+                        <JFXButton fx:id="btnAddListDesejo" alignment="CENTER" onAction="#evtAddListDesejo" prefHeight="25.0" prefWidth="296.0" style="-fx-background-color: #b9c0dd;" text="Add Lista Desejo" HBox.hgrow="ALWAYS">
                            <ripplerFill>
                               <LinearGradient endX="1.0" endY="1.0">
                                  <stops>
@@ -59,15 +58,19 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lista de Desejo" />
                      </children>
                   </HBox>
-                  <TableView fx:id="tbListDesejo" onSort="#evtClickListDes" prefHeight="159.0" prefWidth="634.0">
-                     <columns>
-                        <TableColumn fx:id="colInfo2" prefWidth="162.0" text="Info. Produto" />
-                        <TableColumn fx:id="colLocalProd" prefWidth="125.0" text="Local Produto" />
-                        <TableColumn fx:id="colDestino" prefWidth="125.0" text="Destino" />
-                        <TableColumn fx:id="colDistancia" prefWidth="125.0" text="Distância" />
-                        <TableColumn fx:id="colValorFrete" prefWidth="75.0" text="Valor Frete" />
-                     </columns>
-                  </TableView>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <TableView fx:id="tbListDesejo" prefHeight="159.0" prefWidth="522.0">
+                           <columns>
+                              <TableColumn fx:id="colOrigem2" prefWidth="125.0" text="Origem" />
+                              <TableColumn fx:id="colDestino2" prefWidth="125.0" text="Destino" />
+                              <TableColumn fx:id="colMedida2" prefWidth="100.0" text="Medida" />
+                              <TableColumn fx:id="colPeso2" prefWidth="75.0" text="Peso" />
+                              <TableColumn fx:id="colValorFrete2" prefWidth="93.0" text="Valor Frete" />
+                           </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
                   <Separator prefWidth="200.0" />
                   <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
                      <children>
@@ -82,6 +85,9 @@
                            </ripplerFill>
                         </JFXButton>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
