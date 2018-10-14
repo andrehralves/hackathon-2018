@@ -9,6 +9,7 @@ package Sessao;
 
 import Controladoras.CtrlPessoa;
 import Entidades.Individuo;
+import Entidades.Pessoa;
 import Utils.Imagem;
 import java.awt.image.BufferedImage;
 import javafx.scene.control.Label;
@@ -40,6 +41,12 @@ public class Sessao {
                 Image image = Imagem.BufferedImageToImage(Foto);
                 circle.setFill(new ImagePattern(image));
             }
+        }
+    }
+
+    public static void setUsuario(Label txUsuarioInterface) {
+        if(individuo != null && individuo instanceof Pessoa){
+            txUsuarioInterface.setText(((Pessoa)individuo).getEmail());
         }
     }
 
