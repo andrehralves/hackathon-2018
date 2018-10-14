@@ -47,6 +47,15 @@ public class CtrlPessoa extends CtrlBase {
         return null;
 
     }
+    
+    public static Object getIdVeiculo(Object pessoa)
+    {
+        Pessoa p = (Pessoa)pessoa;
+        if (p.getVeiculoId() != null) {
+            return p.getVeiculoId();
+        }
+        return null;
+    }
 
     public static Object getCentrodedistribuicao(Object pessoa) {
         if (pessoa != null && pessoa instanceof Pessoa) {
