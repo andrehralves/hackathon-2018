@@ -41,16 +41,17 @@ public class FindAddVeiculoController implements Initializable, InterfaceFxmlAca
     private TableColumn<Object, Object> tcNome;
     @FXML
     private JFXTextArea taDescricao;
-    private Object Instancia;
     @FXML
     private VBox pndados;
-    private boolean FlagAdicionar;
     @FXML
     private JFXButton btnSelecionar;
     @FXML
     private JFXButton btnAdicionar;
     @FXML
-    private TableColumn<?, ?> tcAcoes;
+    private TableColumn<Object, Object> tcAcoes;
+
+    private boolean FlagAdicionar;
+    private Object Instancia;
 
     /**
      * Initializes the controller class.
@@ -59,6 +60,7 @@ public class FindAddVeiculoController implements Initializable, InterfaceFxmlAca
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         SetTelaAcao();
+        ModPessoaController.setVeiculo(null);
         tcNome.setCellValueFactory(new PropertyValueFactory("Nome"));
         tcAcoes.setCellValueFactory(new PropertyValueFactory("Crud"));
         EstadoOriginal();
@@ -87,6 +89,7 @@ public class FindAddVeiculoController implements Initializable, InterfaceFxmlAca
 
     @FXML
     private void evtSelecionar(MouseEvent event) {
+        ModPessoaController.setVeiculo(Instancia);
         evtCancelar(event);
     }
 
@@ -109,7 +112,7 @@ public class FindAddVeiculoController implements Initializable, InterfaceFxmlAca
                 Mensagem.Exibir(cf.getMsg(), 2);
             } else {
                 EstadoOriginal();
-                Variables._secaoPrincipal.pop();
+                evtSelecionar(event);
             }
         } else {
             Mensagem.Exibir("Campos Inválidos!", 2);
@@ -167,7 +170,7 @@ public class FindAddVeiculoController implements Initializable, InterfaceFxmlAca
     }
 
     private void evtRemover(Object Reference) {
-        if(CtrlVeiculo.create().Remover(CtrlVeiculo.getId(Reference))){
+        if (CtrlVeiculo.create().Remover(CtrlVeiculo.getId(Reference))) {
             CarregaTabela("");
         }
     }

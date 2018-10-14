@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Transacao.Transaction;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ public class FalconDelivery  extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        Transaction.Connect();
         Parent root = FXMLLoader.load(getClass().getResource("Tela.fxml"));
         
         Scene scene = new Scene(root);

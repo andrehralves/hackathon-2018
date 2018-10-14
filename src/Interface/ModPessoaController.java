@@ -7,6 +7,7 @@ package Interface;
 
 import Controladoras.CtrlCentrodedistribuicao;
 import Controladoras.CtrlPessoa;
+import Controladoras.CtrlVeiculo;
 import Sessao.Sessao;
 import Utils.Controladora.CtrlUtils;
 import Utils.MaskFieldUtil;
@@ -57,7 +58,8 @@ public class ModPessoaController implements Initializable {
     @FXML
     private VBox pndados;
 
-    private Object veiculo;
+    private static ModPessoaController Tela;
+    private static Object veiculo;
     private Object Instancia;
     private Integer ID;
 
@@ -67,15 +69,16 @@ public class ModPessoaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Tela = this;
         MaskFieldUtil.cepField(txbcep);
         MaskFieldUtil.cpfCnpjField(txbcpf_cnpj);
         Instancia = Sessao.getIndividuo();
         EstadoOriginal();
-    }    
+    }
 
     private void setCampos(Object f) {
         if (f != null) {
-            CtrlPessoa.setCampos(f,txbnome, txbtelefone, txbemail, txbsenha, txbconfirmasenha, txbendereco, txbcep, txbcomplemento,
+            CtrlPessoa.setCampos(f, txbnome, txbtelefone, txbemail, txbsenha, txbconfirmasenha, txbendereco, txbcep, txbcomplemento,
                     txbcpf_cnpj, txbveiculo, chboxcentrodistribuicao, txbdetalhes);
             ID = CtrlPessoa.getId(f);
             Instancia = f;
@@ -91,6 +94,8 @@ public class ModPessoaController implements Initializable {
 
     @FXML
     private void evtRemoveVeiculo(MouseEvent event) {
+        veiculo = null;
+        txbveiculo.setText("");
     }
 
     private void EstadoOriginal() {
@@ -115,9 +120,9 @@ public class ModPessoaController implements Initializable {
                     txbendereco.getText(), txbcomplemento.getText(), txbtelefone.getText(), Cnpj, Cpf, null, veiculo)) == null)) {
                 Mensagem.Exibir(cf.getMsg(), 2);
             } else {
-                if(chboxcentrodistribuicao.isSelected()){
+                if (chboxcentrodistribuicao.isSelected()) {
                     Instancia = cd.Adicionar(txbdetalhes.getText(), Instancia);
-                }else{
+                } else {
                     Instancia = cf.Remover(Instancia);
                 }
                 EstadoOriginal();
@@ -140,12 +145,12 @@ public class ModPessoaController implements Initializable {
         CtrlUtils.setCor(st, txbcomplemento);
         CtrlUtils.setCor(st, txbcpf_cnpj);
         CtrlUtils.setCor(st, txbcep);
-        
+
         CtrlUtils.setCor(st, txbnome);
         CtrlUtils.setCor(st, txbtelefone);
         CtrlUtils.setCor(st, txbveiculo);
         CtrlUtils.setCor(st, txbdetalhes);
-        
+
     }
 
     private boolean validaCampos() {
@@ -169,7 +174,7 @@ public class ModPessoaController implements Initializable {
             txbsenha.setText("");
             txbsenha.requestFocus();
             fl = false;
-        }else if(!txbsenha.getText().equals(txbconfirmasenha.getText())){
+        } else if (!txbsenha.getText().equals(txbconfirmasenha.getText())) {
             CtrlUtils.setCor("red", txbconfirmasenha);
             txbconfirmasenha.setText("");
             txbconfirmasenha.requestFocus();
@@ -206,5 +211,14 @@ public class ModPessoaController implements Initializable {
     private void evtCancelar(MouseEvent event) {
     }
 
-    
+    /**
+     * @param aVeiculo the veiculo to set
+     */
+    public static void setVeiculo(Object aVeiculo) {
+        if (aVeiculo != null) {
+            CtrlVeiculo.setCampoBusca(aVeiculo, Tela.txbveiculo);
+        }
+        veiculo = aVeiculo;
+    }
+
 }
