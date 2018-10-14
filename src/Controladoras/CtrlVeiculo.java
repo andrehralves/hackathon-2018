@@ -8,6 +8,7 @@ package Controladoras;
 import Controladora.Base.CtrlBase;
 import Entidades.Veiculo;
 import Transacao.Transaction;
+import com.jfoenix.controls.JFXTextField;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.TextArea;
@@ -33,10 +34,11 @@ public class CtrlVeiculo extends CtrlBase {
         super(Transaction.getEntityManagerFactory());
     }
 
-    public static void setCampos(Object veiculo, TextArea taObs) {
+    public static void setCampos(Object veiculo, JFXTextField txbNome, TextArea taObs) {
         if (veiculo != null && veiculo instanceof Veiculo) {
             Veiculo f = (Veiculo) veiculo;
-            //////taObs.setText(f.getDetalhes());
+            taObs.setText(f.getDescricao());
+            txbNome.setText(f.getNome());
         }
     }
 
@@ -64,8 +66,13 @@ public class CtrlVeiculo extends CtrlBase {
                 ResultVeiculo = em.createNamedQuery("Veiculo.findAll", Veiculo.class)
                         .getResultList();
             } else {
-                ResultVeiculo = em.createNamedQuery("Veiculo.findByVeiculoId", Veiculo.class)
-                        .setParameter("veiculoId", Filtro).getResultList();
+                try {
+                    ResultVeiculo = em.createNamedQuery("Veiculo.findByVeiculoId", Veiculo.class)
+                            .setParameter("veiculoId", Integer.parseInt(Filtro)).getResultList();
+                } catch (Exception ex) {
+                    ResultVeiculo = em.createNamedQuery("Veiculo.findAll", Veiculo.class)
+                            .getResultList();
+                }
             }
             for (Veiculo veiculos : ResultVeiculo) {
                 veiculo.add(veiculos);
@@ -104,5 +111,5 @@ public class CtrlVeiculo extends CtrlBase {
     protected void setEntityReference() {
         setEntityReference(Veiculo.class);
     }
-    
+
 }

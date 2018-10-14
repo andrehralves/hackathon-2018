@@ -5,7 +5,7 @@
  */
 package Entidades;
 
-import JPA.Dao.JPADao;
+import Utils.Acao.ButtonAcao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Veiculo.findByVeiculoId", query = "SELECT v FROM Veiculo v WHERE v.veiculoId = :veiculoId")
     , @NamedQuery(name = "Veiculo.findByNome", query = "SELECT v FROM Veiculo v WHERE v.nome = :nome")
     , @NamedQuery(name = "Veiculo.findByDescricao", query = "SELECT v FROM Veiculo v WHERE v.descricao = :descricao")})
-public class Veiculo extends JPADao implements Serializable {
+public class Veiculo extends ButtonAcao<Veiculo> implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -141,6 +141,11 @@ public class Veiculo extends JPADao implements Serializable {
     @Override
     public String toString() {
         return veiculoId.toString();
+    }
+
+    @Override
+    protected void AddNodes() {
+        addNode("Button", "rem", "Remover");
     }
     
 }

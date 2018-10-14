@@ -67,9 +67,9 @@ public class CtrlUtils {
         }
         return flag;
     }
-    
-    public static boolean CloseChildren(Pane pane, boolean EOriginal){
-        
+
+    public static boolean CloseChildren(Pane pane, boolean EOriginal) {
+
         boolean flag = false;
         if (EOriginal && pane != null) {
             pane.getChildren().clear();
@@ -90,4 +90,16 @@ public class CtrlUtils {
         }
         return flag;
     }
+
+    public static void setCor(String cor, Node node) {
+        if (node != null) {
+            StringBuilder st = new StringBuilder();
+            st.append("-jfx-focus-color: ").append(cor).append(";");
+            st.append("-jfx-unfocus-color: ").append(cor).append(";");
+            /*st.append("-fx-prompt-text-fill: ").append(cor).append(";");*/
+ /*st.append("-fx-text-fill: ").append(cor).append(";");*/
+            node.setStyle(st.toString());
+        }
+    }
+
 }
