@@ -5,7 +5,10 @@
  */
 package Interface;
 
+import Controladoras.CtrlMovimentacao;
 import Controladoras.CtrlPedido;
+import Controladoras.CtrlPessoa;
+import Sessao.Sessao;
 import Utils.MaskFieldUtil;
 import Utils.Mensagem;
 import com.jfoenix.controls.JFXButton;
@@ -84,7 +87,15 @@ public class TelaTransportarController implements Initializable {
 
     @FXML
     private void evtSalvar(ActionEvent event) {
-        Mensagem.Exibir("Pedidos adicionados !", 1);
+        if (CtrlPessoa.getIdVeiculo(Sessao.getIndividuo()) != null) {
+            for (int i = 0; i < tbListDesejo.getItems().size(); i++) {
+                CtrlMovimentacao.create().Salvar(null, Sessao.getIndividuo(), CtrlPessoa.getIdVeiculo(Sessao.getIndividuo()),
+                                             tbListDesejo.getSelectionModel().getSelectedItems().get(i), null);
+            }
+            Mensagem.Exibir("Seleção de pedidos salvo com sucesso !", 1);
+        }
+        else
+            Mensagem.Exibir("Você não possui um veículo cadastrado !", 2);
     }
 
     @FXML
