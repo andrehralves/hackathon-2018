@@ -168,7 +168,7 @@ public class Pedido extends JPADao implements Serializable {
             return "";
         }
         String c = cep;
-        if (c.length() != 8) {
+        if (c.length() < 8 && c.length() > 18) {
             return "";
         }
         return c.substring(0, 5) + "-" + c.substring(5, c.length());    

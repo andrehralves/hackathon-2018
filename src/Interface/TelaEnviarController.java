@@ -84,13 +84,14 @@ public class TelaEnviarController implements Initializable {
         //MaskFieldUtil.numericField(txNumDest);
         MaskFieldUtil.numericField(txPeso);
         //cbUsu.getSelectionModel().selectFirst();
+        estadoOriginal();
     }    
     
     private void estadoOriginal() {
         setAllErro(false);
+        CtrlUtils.clear(pndados.getChildren());
         cbUsu.getItems().addAll(CtrlPessoa.create().Pesquisar(""));
         cbUsu.getItems().remove(Sessao.getIndividuo());
-        CtrlUtils.clear(pndados.getChildren());
     }
     
     private void setAllErro(boolean valor) {

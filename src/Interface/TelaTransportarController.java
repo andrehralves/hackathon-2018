@@ -81,7 +81,7 @@ public class TelaTransportarController implements Initializable {
     public void estadoInicial()
     {
         CtrlPedido ctrPedido = CtrlPedido.create();
-        ObservableList<Object> obsl = FXCollections.observableArrayList(ctrPedido.Pesquisar(""));
+        ObservableList<Object> obsl = FXCollections.observableArrayList(ctrPedido.PesquisarStatus(false));
         tbProdProx.setItems(obsl);
     }       
 
@@ -90,7 +90,9 @@ public class TelaTransportarController implements Initializable {
         if (CtrlPessoa.getIdVeiculo(Sessao.getIndividuo()) != null) {
             for (int i = 0; i < tbListDesejo.getItems().size(); i++) {
                 CtrlMovimentacao.create().Salvar(null, Sessao.getIndividuo(), CtrlPessoa.getIdVeiculo(Sessao.getIndividuo()),
-                                             tbListDesejo.getSelectionModel().getSelectedItems().get(i), null);
+                                             tbListDesejo.getItems().get(i), null);
+                CtrlPedido.create().AlterarStatus(tbListDesejo.getItems().get(i), true);
+                tbListDesejo.getItems().clear();
             }
             Mensagem.Exibir("Seleção de pedidos salvo com sucesso !", 1);
         }

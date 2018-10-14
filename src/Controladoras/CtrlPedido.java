@@ -80,6 +80,27 @@ public class CtrlPedido extends CtrlBase {
                 em.close();
             }
         }
+        return pedido;
+    }
+
+    public ArrayList<Object> PesquisarStatus(boolean Filtro) {
+        ArrayList<Object> pedido = new ArrayList();
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            List<Pedido> ResultPedido;
+            ResultPedido = em.createNamedQuery("Pedido.findByStatus", Pedido.class)
+                    .setParameter("status", Filtro).getResultList();
+            for (Pedido pedidos : ResultPedido) {
+                pedido.add(pedidos);
+            }
+
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
 
         return pedido;
     }
@@ -122,6 +143,16 @@ public class CtrlPedido extends CtrlBase {
             if (mensagens != null && mensagens instanceof Mensagens) {
                 pedido.setMensagemId((Mensagens) mensagens);
             }
+            pedido = (Pedido) super.Alterar(pedido);
+        }
+        return pedido;
+    }
+
+    public Object AlterarStatus(Object oPedido, boolean Status) {
+        Pedido pedido = null;
+        if (oPedido != null && oPedido instanceof Pedido) {
+            pedido = (Pedido) oPedido;
+            pedido.setStatus(Status);
             pedido = (Pedido) super.Alterar(pedido);
         }
         return pedido;

@@ -72,7 +72,7 @@ public class AddPessoaController implements Initializable {
             } else {
                 Cpf = txbcpf_cnpj.getText();
             }
-            if ((Instancia = cf.Salvar("", txbemail.getText(), txbsenha.getText(), txbcep.getText(), txbendereco.getText(), txbcomplemento.getText(),
+            if ((Instancia = cf.Salvar("", txbemail.getText(), txbsenha.getText(), txbcep.getText().replace("-", ""), txbendereco.getText(), txbcomplemento.getText(),
                     "", Cnpj, Cpf, null, veiculo)) == null) {
                 Mensagem.Exibir(cf.getMsg(), 2);
             } else {
