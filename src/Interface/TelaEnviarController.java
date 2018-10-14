@@ -12,6 +12,7 @@ import Utils.BuscaCEP;
 import Utils.Controladora.CtrlUtils;
 import Utils.Endereço;
 import Utils.MaskFieldUtil;
+import Utils.Mensagem;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
@@ -37,7 +38,6 @@ import javafx.scene.layout.VBox;
  */
 public class TelaEnviarController implements Initializable {
 
-    @FXML
     private JFXTextField txNomeDest;
     @FXML
     private JFXTextField txCepDest;
@@ -83,14 +83,13 @@ public class TelaEnviarController implements Initializable {
         MaskFieldUtil.cepField(txCepDest);
         //MaskFieldUtil.numericField(txNumDest);
         MaskFieldUtil.numericField(txPeso);
-        
-        cbUsu.getItems().addAll(CtrlPessoa.create().Pesquisar(""));
-        cbUsu.getItems().remove(Sessao.getIndividuo());
         //cbUsu.getSelectionModel().selectFirst();
     }    
     
-    private void EstadoOriginal() {
+    private void estadoOriginal() {
         setAllErro(false);
+        cbUsu.getItems().addAll(CtrlPessoa.create().Pesquisar(""));
+        cbUsu.getItems().remove(Sessao.getIndividuo());
         CtrlUtils.clear(pndados.getChildren());
     }
     
@@ -155,10 +154,18 @@ public class TelaEnviarController implements Initializable {
     {
         setAllErro(false);
         if (validaCampos()) {
-            System.out.println("Valido");
             CtrlPedido ctrl = CtrlPedido.create();
             CtrlPessoa pessoa = CtrlPessoa.create();
-            ctrl.Salvar(txMedidas.getText(), new BigDecimal(Double.parseDouble(txPeso.getText())), false, Sessao.getIndividuo(), txRuaDest, ctrl, event);
+            
+            if (ctrl.Salvar(txMedidas.getText(), new BigDecimal(Double.parseDouble(txPeso.getText())),
+               false, Sessao.getIndividuo(), cbUsu.getSelectionModel().getSelectedItem(), null, null) != null)
+            {
+                Mensagem.Exibir("Envio do produto cadastrado com sucesso !", 1);
+                estadoOriginal();
+            }
+            else
+                Mensagem.Exibir("Erro ao cadastrar envio do produto !", 3);
+            
         }
     }
     
@@ -166,12 +173,7 @@ public class TelaEnviarController implements Initializable {
 
         boolean fl = true;
         CtrlPessoa cf = CtrlPessoa.create();
-        if (txNomeDest.getText().trim().isEmpty()) {
-            setCor("red", txNomeDest);
-            txNomeDest.setText("");
-            txNomeDest.requestFocus();
-            fl = false;
-        }
+
         if (txCepDest.getText().trim().isEmpty()) {
             setCor("red", txCepDest);
             txCepDest.setText("");

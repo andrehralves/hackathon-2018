@@ -160,9 +160,37 @@ public class Pedido extends JPADao implements Serializable {
         return pessoaOrigemId.getCep();
     }
     
+    public String getOrigemFormatada()
+    {
+        String cep = pessoaOrigemId.getCep();
+        
+        if (cep.equals("0")) {
+            return "";
+        }
+        String c = cep;
+        if (c.length() != 8) {
+            return "";
+        }
+        return c.substring(0, 5) + "-" + c.substring(5, c.length());    
+    }
+    
     public String getDestino()
     {
         return pessoaDestinoId.getCep();
+    }
+    
+    public String getDestinoFormatada()
+    {
+        String cep = pessoaDestinoId.getCep();
+        
+        if (cep.equals("0")) {
+            return "";
+        }
+        String c = cep;
+        if (c.length() != 8) {
+            return "";
+        }
+        return c.substring(0, 5) + "-" + c.substring(5, c.length());  
     }
 
     public Pessoa getPessoaDestinoId() {

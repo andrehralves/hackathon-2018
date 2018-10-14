@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -20,12 +21,11 @@
    <center>
       <ScrollPane fitToWidth="true">
          <content>
-            <VBox fx:id="pndados" alignment="CENTER" prefHeight="715.0" prefWidth="319.0" style="-fx-background-color: white;">
+            <VBox fx:id="pndados" alignment="CENTER" prefHeight="735.0" prefWidth="319.0" style="-fx-background-color: white;">
                <children>
                   <HBox alignment="CENTER" prefHeight="20.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: white;">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Destinatário" HBox.hgrow="ALWAYS" />
-                        <JFXButton fx:id="btnBuscarDestinatario" onAction="#evtBuscarDestinatario" style="-fx-background-color: #b9c0dd;" text="+" HBox.hgrow="ALWAYS" />
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -34,9 +34,34 @@
                         <Insets top="7.0" />
                      </padding>
                   </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <JFXComboBox fx:id="cbUsu" labelFloat="true" onHidden="#evtEscolha" prefHeight="31.0" prefWidth="309.0" promptText="Email" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0" spacing="20.0">
+                     <children>
+                        <JFXTextField fx:id="txCepDest" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="139.0" promptText="CEP" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></JFXTextField>
+                        <JFXTextField fx:id="txNumDest" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="63.0" promptText="Nº" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin></JFXTextField>
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
                      <children>
-                        <JFXTextField fx:id="txNomeDest" labelFloat="true" prefHeight="25.0" prefWidth="234.0" promptText="Nome" HBox.hgrow="ALWAYS">
+                        <JFXTextField fx:id="txRuaDest" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="204.0" promptText="Rua" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin></JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXTextField fx:id="txBairroDest" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="204.0" promptText="Bairro" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin></JFXTextField>
@@ -44,39 +69,11 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0" spacing="20.0">
                      <children>
-                        <JFXTextField fx:id="txCepDest" labelFloat="true" prefHeight="25.0" prefWidth="139.0" promptText="CEP" HBox.hgrow="ALWAYS">
+                        <JFXTextField fx:id="txCidadeDest" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="188.0" promptText="Cidade" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin></JFXTextField>
-                        <JFXTextField fx:id="txNumDest" labelFloat="true" prefHeight="25.0" prefWidth="63.0" promptText="Nº" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </HBox.margin></JFXTextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
-                     <children>
-                        <JFXTextField fx:id="txRuaDest" labelFloat="true" prefHeight="25.0" prefWidth="204.0" promptText="Rua" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </HBox.margin></JFXTextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
-                     <children>
-                        <JFXTextField fx:id="txBairroDest" labelFloat="true" prefHeight="25.0" prefWidth="204.0" promptText="Bairro" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </HBox.margin></JFXTextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0" spacing="20.0">
-                     <children>
-                        <JFXTextField fx:id="txCidadeDest" labelFloat="true" prefHeight="25.0" prefWidth="188.0" promptText="Cidade" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin></JFXTextField>
-                        <JFXTextField fx:id="txUFDest" labelFloat="true" prefHeight="25.0" prefWidth="60.0" promptText="UF">
+                        <JFXTextField fx:id="txUFDest" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="60.0" promptText="UF">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin></JFXTextField>

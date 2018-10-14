@@ -6,6 +6,7 @@
 package Interface;
 
 import Controladoras.CtrlPedido;
+import Utils.MaskFieldUtil;
 import Utils.Mensagem;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
@@ -61,13 +62,13 @@ public class TelaTransportarController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        colOrigem.setCellValueFactory(new PropertyValueFactory("origem"));
-        colDestino.setCellValueFactory(new PropertyValueFactory("destino"));
+        colOrigem.setCellValueFactory(new PropertyValueFactory("origemFormatada"));
+        colDestino.setCellValueFactory(new PropertyValueFactory("destinoFormatada"));
         colMedida.setCellValueFactory(new PropertyValueFactory("medida"));
         colPeso.setCellValueFactory(new PropertyValueFactory("peso"));
         //colValorFrete.setCellValueFactory(new PropertyValueFactory("destino"));
-        colOrigem2.setCellValueFactory(new PropertyValueFactory("origem"));
-        colDestino2.setCellValueFactory(new PropertyValueFactory("destino"));
+        colOrigem2.setCellValueFactory(new PropertyValueFactory("origemFormatada"));
+        colDestino2.setCellValueFactory(new PropertyValueFactory("destinoFormatada"));
         colMedida2.setCellValueFactory(new PropertyValueFactory("medida"));
         colPeso2.setCellValueFactory(new PropertyValueFactory("peso"));
         

@@ -293,7 +293,7 @@ public class Pessoa extends JPADao implements Serializable, Individuo {
 
     @Override
     public String toString() {
-        return pessoaId.toString();
+        return email;
     }
 
     public byte[] getImagem() {
