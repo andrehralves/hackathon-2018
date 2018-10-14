@@ -1,12 +1,1 @@
-Sun Oct 14 09:50:37 BRT 2018:  Você não possui um veículo cadastrado !
-Sun Oct 14 09:51:58 BRT 2018:  Campos Inválidos!
-Sun Oct 14 09:52:24 BRT 2018:  Seleção de pedidos salvo com sucesso !
-Sun Oct 14 09:30:35 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
-Sun Oct 14 09:30:36 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
-Sun Oct 14 09:30:37 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
-Sun Oct 14 09:30:38 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
-Sun Oct 14 09:30:40 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
-Sun Oct 14 09:30:41 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
-Sun Oct 14 09:30:41 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
-Sun Oct 14 09:30:41 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
-Sun Oct 14 09:30:41 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
+Sun Oct 14 10:27:05 BRT 2018:  Envio do produto cadastrado com sucesso !
