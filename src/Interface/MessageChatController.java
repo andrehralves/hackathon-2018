@@ -5,7 +5,9 @@
  */
 package Interface;
 
+import Controladoras.CtrlMensagens;
 import Controladoras.CtrlPedido;
+import Sessao.Sessao;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -37,6 +39,7 @@ public class MessageChatController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         Tela = this;
+        CtrlPedido.create().CarregarMensagens(pedido, Tela.taChat);
     }    
 
     @FXML
@@ -46,7 +49,8 @@ public class MessageChatController implements Initializable {
 
     @FXML
     private void evtSubmit(MouseEvent event) {
-        Variables._secaoPrincipal.pop();
+        CtrlPedido.create().AdicionarMensagem(pedido, txbMensagem.getText(), Sessao.getIndividuo());
+        CtrlPedido.create().CarregarMensagens(pedido, Tela.taChat);
     }
 
     /**
@@ -55,6 +59,7 @@ public class MessageChatController implements Initializable {
     public static void setPedido(Object aPedido) {
         if(aPedido != null){
             CtrlPedido.setCampoBusca(pedido, Tela.txbPedido);
+            CtrlPedido.create().CarregarMensagens(pedido, Tela.taChat);
         }
         pedido = aPedido;
     }

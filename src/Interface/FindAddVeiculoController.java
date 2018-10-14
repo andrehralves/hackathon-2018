@@ -78,10 +78,15 @@ public class FindAddVeiculoController implements Initializable, InterfaceFxmlAca
             tabela.setItems(FXCollections.observableList(ctm.Pesquisar(filtro)));
             if (tabela.getItems() != null && tabela.getItems().size() > 0) {
                 FlagAdicionar = true;
+                taDescricao.setDisable(true);
+                btnAdicionar.setDisable(true);
+                btnSelecionar.setDisable(false);
             } else {
                 FlagAdicionar = false;
+                taDescricao.setDisable(false);
+                btnAdicionar.setDisable(false);
+                btnSelecionar.setDisable(true);
             }
-            EstadoEdicao();
         } catch (Exception ex) {
             Mensagem.ExibirException(ex, "Erro AO Carregar Tabela");
         }
@@ -154,12 +159,6 @@ public class FindAddVeiculoController implements Initializable, InterfaceFxmlAca
             fl = false;
         }
         return fl;
-    }
-
-    private void EstadoEdicao() {
-        taDescricao.setDisable(FlagAdicionar);
-        btnAdicionar.setDisable(FlagAdicionar);
-        btnSelecionar.setDisable(!FlagAdicionar);
     }
 
     @Override

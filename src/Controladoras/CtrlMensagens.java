@@ -9,6 +9,7 @@ import Controladora.Base.CtrlBase;
 import Entidades.Mensagens;
 import Entidades.Pessoa;
 import Transacao.Transaction;
+import com.jfoenix.controls.JFXTextArea;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.TextArea;

@@ -75,7 +75,7 @@
                   </JFXTextField>
                   <HBox alignment="TOP_CENTER">
                      <children>
-                        <JFXTextField fx:id="txbveiculo" labelFloat="true" prefHeight="36.0" prefWidth="252.0" promptText="Veiculo">
+                        <JFXTextField fx:id="txbveiculo" labelFloat="true" prefHeight="36.0" prefWidth="288.0" promptText="Veiculo">
                            <padding>
                               <Insets top="12.0" />
                            </padding>

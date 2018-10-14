@@ -1,3 +1,9 @@
-Sun Oct 14 03:34:03 BRT 2018:  Error resolving onMouseClicked='#evtAddPessoa', either the event handler is not in the Namespace or there is an error in the script.
-/F:/FalconDelivery/build/classes/Interface/Login.fxml:32
-
+Sun Oct 14 09:30:35 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
+Sun Oct 14 09:30:36 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
+Sun Oct 14 09:30:37 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
+Sun Oct 14 09:30:38 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
+Sun Oct 14 09:30:40 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
+Sun Oct 14 09:30:41 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
+Sun Oct 14 09:30:41 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
+Sun Oct 14 09:30:41 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"
+Sun Oct 14 09:30:41 BRT 2018:  Erro AO Carregar Tabela For input string: "LK"

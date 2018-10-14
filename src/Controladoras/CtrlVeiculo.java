@@ -51,7 +51,7 @@ public class CtrlVeiculo extends CtrlBase {
 
     public static void setCampoBusca(Object p, TextField txBusca) {
         if (p != null && p instanceof Veiculo) {
-            txBusca.setText(((Veiculo) p).getVeiculoId().toString());
+            txBusca.setText(((Veiculo) p).getNome().toString());
         }
     }
 
@@ -70,8 +70,8 @@ public class CtrlVeiculo extends CtrlBase {
                     ResultVeiculo = em.createNamedQuery("Veiculo.findByVeiculoId", Veiculo.class)
                             .setParameter("veiculoId", Integer.parseInt(Filtro)).getResultList();
                 } catch (Exception ex) {
-                    ResultVeiculo = em.createNamedQuery("Veiculo.findAll", Veiculo.class)
-                            .getResultList();
+                    ResultVeiculo = em.createNamedQuery("Veiculo.findByNome", Veiculo.class)
+                            .setParameter("nome", Filtro).getResultList();
                 }
             }
             for (Veiculo veiculos : ResultVeiculo) {
