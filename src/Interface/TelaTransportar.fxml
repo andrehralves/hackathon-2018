@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane prefHeight="500.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.TelaTransportarController">
+   <center>
+      <ScrollPane fitToWidth="true" prefHeight="466.0" prefWidth="338.0">
+         <content>
+            <VBox prefHeight="490.0" prefWidth="322.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="322.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos na Proximidade" />
+                     </children>
+                  </HBox>
+                  <ScrollPane prefHeight="175.0" prefWidth="322.0">
+                     <content>
+                        <TableView fx:id="tbProdProx" onSort="#evtClickProdProx" prefHeight="159.0" prefWidth="634.0">
+                           <columns>
+                              <TableColumn fx:id="colInfo" prefWidth="162.0" text="Info. Produto" />
+                              <TableColumn fx:id="colLocalProd" prefWidth="125.0" text="Local Produto" />
+                              <TableColumn fx:id="colDestino" prefWidth="125.0" text="Destino" />
+                              <TableColumn fx:id="colDistancia" prefWidth="125.0" text="Distância" />
+                              <TableColumn fx:id="colValorFrete" prefWidth="75.0" text="Valor Frete" />
+                           </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXButton fx:id="btnAddListDesejo" alignment="CENTER" prefHeight="25.0" prefWidth="296.0" style="-fx-background-color: #b9c0dd;" text="Add Lista Desejo" HBox.hgrow="ALWAYS">
+                           <ripplerFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="322.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lista de Desejo" />
+                     </children>
+                  </HBox>
+                  <TableView fx:id="tbListDesejo" onSort="#evtClickListDes" prefHeight="159.0" prefWidth="634.0">
+                     <columns>
+                        <TableColumn fx:id="colInfo2" prefWidth="162.0" text="Info. Produto" />
+                        <TableColumn fx:id="colLocalProd" prefWidth="125.0" text="Local Produto" />
+                        <TableColumn fx:id="colDestino" prefWidth="125.0" text="Destino" />
+                        <TableColumn fx:id="colDistancia" prefWidth="125.0" text="Distância" />
+                        <TableColumn fx:id="colValorFrete" prefWidth="75.0" text="Valor Frete" />
+                     </columns>
+                  </TableView>
+                  <Separator prefWidth="200.0" />
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXButton fx:id="btnSalvar" alignment="CENTER" onAction="#evtSalvar" prefHeight="25.0" prefWidth="296.0" style="-fx-background-color: #b9c0dd;" text="Salvar" HBox.hgrow="ALWAYS">
+                           <ripplerFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="335.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transportar">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+         </children>
+         <padding>
+            <Insets bottom="7.0" top="7.0" />
+         </padding>
+      </HBox>
+   </top>
+</BorderPane>

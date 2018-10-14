@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane prefHeight="500.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.TelaRotasFuturasController">
+   <center>
+      <ScrollPane fitToWidth="true" prefHeight="466.0" prefWidth="338.0">
+         <content>
+            <VBox prefHeight="548.0" prefWidth="322.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="322.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Data" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="paneCalendario" alignment="CENTER" prefHeight="47.0" prefWidth="322.0">
+                     <children>
+                        <DatePicker fx:id="dtData" prefHeight="29.0" prefWidth="261.0" />
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="322.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Localização Inicial" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="paneCalendario1" alignment="CENTER" prefHeight="41.0" prefWidth="322.0" spacing="10.0">
+                     <children>
+                        <JFXTextField fx:id="txCepOri" labelFloat="true" prefHeight="25.0" prefWidth="232.0" promptText="CEP" HBox.hgrow="ALWAYS" />
+                        <JFXButton fx:id="btnAbrirMapaOrigem" onAction="#evtAbirMapaOrigem" style="-fx-background-color: #e47373;" text="Map" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXTextField fx:id="txRuaOri" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="204.0" promptText="Rua" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXTextField fx:id="txBairroOri" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="204.0" promptText="Bairro" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0" spacing="20.0">
+                     <children>
+                        <JFXTextField fx:id="txCidadeOri" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="188.0" promptText="Cidade" HBox.hgrow="ALWAYS" />
+                        <JFXTextField fx:id="txUFOri" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="60.0" promptText="UF" />
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="322.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Localização Final" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="paneCalendario11" alignment="CENTER" prefHeight="41.0" prefWidth="322.0" spacing="10.0">
+                     <children>
+                        <JFXTextField fx:id="txCepDest" labelFloat="true" promptText="CEP" HBox.hgrow="ALWAYS" />
+                        <JFXButton fx:id="btnAbrirMapaDest" onAction="#evtAbrirMapaDest" style="-fx-background-color: #e47373;" text="Map" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXTextField fx:id="txRuaDest" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="204.0" promptText="Rua" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXTextField fx:id="txBairroDest" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="204.0" promptText="Bairro" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0" spacing="20.0">
+                     <children>
+                        <JFXTextField fx:id="txCidadeDest" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="188.0" promptText="Cidade" HBox.hgrow="ALWAYS" />
+                        <JFXTextField fx:id="txUFDest" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="60.0" promptText="UF" />
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXButton fx:id="btnSalvar" alignment="CENTER" onAction="#evtSalvar" prefHeight="25.0" prefWidth="296.0" style="-fx-background-color: #b9c0dd;" text="Salvar" HBox.hgrow="ALWAYS">
+                           <ripplerFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="335.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rotas Futuras">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+         </children>
+         <padding>
+            <Insets bottom="7.0" top="7.0" />
+         </padding>
+      </HBox>
+   </top>
+</BorderPane>

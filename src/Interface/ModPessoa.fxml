@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="500.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.ModPessoaController">
+   <center>
+      <ScrollPane BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="pndados" alignment="CENTER" prefWidth="318.0" spacing="10.0">
+               <children>
+                  <JFXTextField fx:id="txbnome" labelFloat="true" prefHeight="68.0" prefWidth="252.0" promptText="Nome">
+                     <padding>
+                        <Insets top="28.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXTextField fx:id="txbtelefone" labelFloat="true" prefHeight="68.0" prefWidth="252.0" promptText="Telefone">
+                     <padding>
+                        <Insets top="28.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXTextField fx:id="txbemail" labelFloat="true" prefHeight="68.0" prefWidth="252.0" promptText="Email">
+                     <padding>
+                        <Insets top="28.0" />
+                     </padding>
+                  </JFXTextField>
+                  <HBox spacing="10.0">
+                     <children>
+                        <JFXPasswordField fx:id="txbsenha" labelFloat="true" prefHeight="68.0" prefWidth="148.0" promptText="Senha">
+                           <padding>
+                              <Insets top="28.0" />
+                           </padding>
+                        </JFXPasswordField>
+                        <JFXPasswordField fx:id="txbconfirmasenha" labelFloat="true" prefHeight="68.0" prefWidth="148.0" promptText="Confirmar Senha">
+                           <padding>
+                              <Insets top="28.0" />
+                           </padding>
+                        </JFXPasswordField>
+                     </children>
+                  </HBox>
+                  <JFXTextField fx:id="txbendereco" labelFloat="true" prefHeight="68.0" prefWidth="252.0" promptText="Endereço">
+                     <padding>
+                        <Insets top="28.0" />
+                     </padding>
+                  </JFXTextField>
+                  <HBox spacing="10.0">
+                     <children>
+                        <JFXTextField fx:id="txbcep" labelFloat="true" prefHeight="68.0" prefWidth="168.0" promptText="Cep">
+                           <padding>
+                              <Insets top="28.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txbcomplemento" labelFloat="true" prefHeight="68.0" prefWidth="128.0" promptText="Complemento">
+                           <padding>
+                              <Insets top="28.0" />
+                           </padding>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <JFXTextField fx:id="txbcpf_cnpj" labelFloat="true" prefHeight="68.0" prefWidth="252.0" promptText="CPF/CNPJ">
+                     <padding>
+                        <Insets top="28.0" />
+                     </padding>
+                  </JFXTextField>
+                  <HBox alignment="TOP_CENTER">
+                     <children>
+                        <JFXTextField fx:id="txbveiculo" labelFloat="true" prefHeight="36.0" prefWidth="252.0" promptText="Veiculo">
+                           <padding>
+                              <Insets top="12.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXButton onMouseClicked="#evtAddVeiculo" prefHeight="36.0" text=" ">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="PLUS" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton onMouseClicked="#evtRemoveVeiculo" prefHeight="36.0" text=" ">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="MINUS" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets top="12.0" />
+                     </padding>
+                  </HBox>
+                  <VBox alignment="TOP_CENTER" spacing="10.0">
+                     <children>
+                        <HBox alignment="TOP_CENTER">
+                           <children>
+                              <JFXCheckBox fx:id="chboxcentrodistribuicao" text="Centro de Distribuição" />
+                           </children>
+                           <padding>
+                              <Insets top="12.0" />
+                           </padding>
+                        </HBox>
+                        <VBox alignment="TOP_CENTER">
+                           <children>
+                              <JFXTextArea fx:id="txbdetalhes" labelFloat="true" prefHeight="20.0" promptText="Detalhes do Centro de Distribuição." />
+                           </children>
+                           <padding>
+                              <Insets top="18.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="TOP_CENTER">
+                     <children>
+                        <JFXButton onMouseClicked="#evtAtualizar" prefWidth="282.0" text="Atualizar">
+                           <padding>
+                              <Insets top="28.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton onMouseClicked="#evtCancelar" prefWidth="282.0" text="Cancelar">
+                           <padding>
+                              <Insets top="28.0" />
+                           </padding>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <HBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Atualizar Perfil">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="pndados" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.LoginController">
+   <children>
+      <BorderPane prefHeight="500.0" prefWidth="338.0">
+         <center>
+            <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXTextField fx:id="txbEmail" labelFloat="true" prefHeight="68.0" prefWidth="252.0" promptText="Email">
+                     <padding>
+                        <Insets top="28.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXPasswordField fx:id="txbSenha" labelFloat="true" prefHeight="68.0" prefWidth="252.0" promptText="Password">
+                     <padding>
+                        <Insets top="28.0" />
+                     </padding>
+                  </JFXPasswordField>
+                  <HBox alignment="TOP_RIGHT">
+                     <children>
+                        <Label onMouseClicked="#evtAddPessoa" text="Nova Conta" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <JFXButton onMouseClicked="#evtLogin" prefWidth="328.0" style="-fx-background-color: #b9c0dd;" text="Login" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </center>
+         <top>
+            <HBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</VBox>

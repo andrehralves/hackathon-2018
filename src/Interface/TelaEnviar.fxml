@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="500.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.TelaEnviarController">
+   <center>
+      <ScrollPane fitToWidth="true">
+         <content>
+            <VBox alignment="CENTER" prefHeight="567.0" prefWidth="319.0" style="-fx-background-color: white;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="20.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: white;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Destinatário" HBox.hgrow="ALWAYS" />
+                        <JFXButton fx:id="btnBuscarDestinatario" onAction="#evtBuscarDestinatario" style="-fx-background-color: #b9c0dd;" text="+" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="7.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXTextField fx:id="txNomeDest" labelFloat="true" prefHeight="25.0" prefWidth="234.0" promptText="Nome" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0" spacing="20.0">
+                     <children>
+                        <JFXTextField fx:id="txCepDest" labelFloat="true" prefHeight="25.0" prefWidth="139.0" promptText="CEP" HBox.hgrow="ALWAYS" />
+                        <JFXTextField fx:id="txNumDest" labelFloat="true" prefHeight="25.0" prefWidth="63.0" promptText="Nº" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXTextField fx:id="txRuaDest" labelFloat="true" prefHeight="25.0" prefWidth="204.0" promptText="Rua" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXTextField fx:id="txBairroDest" labelFloat="true" prefHeight="25.0" prefWidth="204.0" promptText="Bairro" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0" spacing="20.0">
+                     <children>
+                        <JFXTextField fx:id="txCidadeDest" labelFloat="true" prefHeight="25.0" prefWidth="188.0" promptText="Cidade" HBox.hgrow="ALWAYS" />
+                        <JFXTextField fx:id="txUFDest" labelFloat="true" prefHeight="25.0" prefWidth="60.0" promptText="UF" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="11.0" prefWidth="319.0" spacing="20.0">
+                     <children>
+                        <Separator prefHeight="0.0" prefWidth="282.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="20.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: white;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Produto" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0" spacing="20.0">
+                     <children>
+                        <JFXTextField fx:id="txPeso" labelFloat="true" prefHeight="25.0" prefWidth="174.0" promptText="Peso" HBox.hgrow="ALWAYS" />
+                        <JFXTextField fx:id="txMedidas" labelFloat="true" prefHeight="25.0" prefWidth="153.0" promptText="Medidas" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="78.0" prefWidth="322.0" spacing="10.0">
+                     <children>
+                        <JFXTextArea fx:id="txObs" labelFloat="true" prefHeight="45.0" prefWidth="215.0" promptText="Observação">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </JFXTextArea>
+                        <JFXButton fx:id="btnCarregarFotos" alignment="CENTER" onAction="#evtCarregarFotos" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #b9c0dd;" text="Carregar Fotos">
+                           <ripplerFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="11.0" prefWidth="319.0" spacing="20.0">
+                     <children>
+                        <Separator prefHeight="0.0" prefWidth="282.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="20.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: white;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Metodo de Postagem" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="319.0" spacing="20.0">
+                     <children>
+                        <JFXRadioButton fx:id="radioPostarPess" selected="true" text="Postar Pessoalmente">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="grupo1" />
+                           </toggleGroup>
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="radioSolicitar" text="Solicitar Coleta" toggleGroup="$grupo1" />
+                     </children>
+                     <padding>
+                        <Insets left="25.0" top="8.0" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXButton fx:id="btnVisualizarMotoristas" alignment="CENTER" onAction="#evtVisualizarMotoristas" prefHeight="25.0" prefWidth="296.0" style="-fx-background-color: #b9c0dd;" text="Visualizar Agenda de Motoristas" HBox.hgrow="ALWAYS">
+                           <ripplerFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="11.0" prefWidth="319.0" spacing="20.0">
+                     <children>
+                        <Separator prefHeight="0.0" prefWidth="282.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="335.0">
+                     <children>
+                        <JFXButton fx:id="btnSalvar" alignment="CENTER" onAction="#evtSalvar" prefHeight="25.0" prefWidth="296.0" style="-fx-background-color: #b9c0dd;" text="Salvar" HBox.hgrow="ALWAYS">
+                           <ripplerFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLACK" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="28.0" prefWidth="335.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enviar Produto">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+         </children>
+         <padding>
+            <Insets bottom="7.0" top="7.0" />
+         </padding>
+      </HBox>
+   </top>
+</BorderPane>
