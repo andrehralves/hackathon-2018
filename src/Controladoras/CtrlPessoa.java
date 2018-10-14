@@ -107,6 +107,30 @@ public class CtrlPessoa extends CtrlBase {
 
         }
     }
+    
+    public static void setCampos(Object pessoa, JFXTextField txbcep, JFXTextField txbcomplemento) {
+        if (pessoa != null && pessoa instanceof Pessoa) {
+            Pessoa f = (Pessoa) pessoa;
+            txbcep.setText(f.getCep());
+            txbcomplemento.setText(f.getComplemento());
+            /*txbsenha.setText(f.getSenha());
+            txbconfirmasenha.setText(f.getSenha());
+            txbemail.setText(f.getEmail());
+            txbtelefone.setText(f.getTelefone());
+            txbcpf_cnpj.setText(f.getCpf() + f.getCnpj());
+            txbendereco.setText(f.getEndereco());
+            txbveiculo.setText(f.getVeiculoId() != null ? f.getVeiculoId().toString() : null);
+
+            if (f.getCentrodedistribuicaoCollection() != null && !f.getCentrodedistribuicaoCollection().isEmpty()) {
+                Centrodedistribuicao cd = (Centrodedistribuicao) new ArrayList(f.getCentrodedistribuicaoCollection()).get(0);
+                txbdetalhes.setText(cd.getDetalhes());
+                chboxcentrodistribuicao.setSelected(true);
+            } else {
+                chboxcentrodistribuicao.setSelected(false);
+            }
+            */
+        }
+    }
 
     public static BufferedImage getImagem(Object p) {
         if (p != null && p instanceof Pessoa) {
