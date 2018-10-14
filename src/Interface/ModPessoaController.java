@@ -126,6 +126,7 @@ public class ModPessoaController implements Initializable {
                     Instancia = cf.Remover(Instancia);
                 }
                 EstadoOriginal();
+                evtCancelar(event);
             }
         } else {
             Mensagem.Exibir("Campos Inválidos!", 2);
@@ -209,6 +210,7 @@ public class ModPessoaController implements Initializable {
 
     @FXML
     private void evtCancelar(MouseEvent event) {
+        Variables._secaoPrincipal.pop();
     }
 
     /**

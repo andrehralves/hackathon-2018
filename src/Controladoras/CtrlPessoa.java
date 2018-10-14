@@ -109,7 +109,7 @@ public class CtrlPessoa extends CtrlBase {
             txbtelefone.setText(f.getTelefone());
             txbcpf_cnpj.setText(f.getCpf() + f.getCnpj());
             txbendereco.setText(f.getEndereco());
-            txbveiculo.setText(f.getVeiculoId() != null ? f.getVeiculoId().toString() : null);
+            txbveiculo.setText(f.getVeiculoId() != null ? f.getVeiculoId().getNome() : null);
 
             if (f.getCentrodedistribuicaoCollection() != null && !f.getCentrodedistribuicaoCollection().isEmpty()) {
                 Centrodedistribuicao cd = (Centrodedistribuicao) new ArrayList(f.getCentrodedistribuicaoCollection()).get(0);
@@ -242,6 +242,8 @@ public class CtrlPessoa extends CtrlBase {
             pessoa.setTelefone(telefone);
             if (veiculo != null && veiculo instanceof Veiculo) {
                 pessoa.setVeiculoId((Veiculo) veiculo);
+            }else{
+                pessoa.setVeiculoId(null);
             }
             pessoa = (Pessoa) super.Alterar(pessoa);
         }

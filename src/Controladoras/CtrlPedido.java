@@ -7,10 +7,13 @@ package Controladoras;
 
 import Controladora.Base.CtrlBase;
 import Entidades.Conta;
+import Entidades.Individuo;
 import Entidades.Mensagens;
 import Entidades.Pedido;
 import Entidades.Pessoa;
+import Transacao.Transacao;
 import Transacao.Transaction;
+import com.jfoenix.controls.JFXTextArea;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,40 +26,40 @@ import javax.persistence.EntityManager;
  * @author Carlos Matheus
  */
 public class CtrlPedido extends CtrlBase {
-
+    
     private static CtrlPedido ctrlpedido;
-
+    
     public static CtrlPedido create() {
         if (ctrlpedido == null) {
             ctrlpedido = new CtrlPedido();
         }
         return ctrlpedido;
     }
-
+    
     public CtrlPedido() {
         super(Transaction.getEntityManagerFactory());
     }
-
+    
     public static void setCampos(Object pedido, TextArea taObs) {
         if (pedido != null && pedido instanceof Pedido) {
             Pedido f = (Pedido) pedido;
             //////taObs.setText(f.getDetalhes());
         }
     }
-
+    
     public static Integer getId(Object p) {
         if (p != null && p instanceof Pedido) {
             return ((Pedido) p).getPedidoId();
         }
         return -1;
     }
-
+    
     public static void setCampoBusca(Object p, TextField txBusca) {
         if (p != null && p instanceof Pedido) {
             txBusca.setText(((Pedido) p).getPedidoId().toString());
         }
     }
-
+    
     public ArrayList<Object> Pesquisar(String Filtro) {
         ArrayList<Object> pedido = new ArrayList();
         EntityManager em = null;
@@ -74,7 +77,7 @@ public class CtrlPedido extends CtrlBase {
             for (Pedido pedidos : ResultPedido) {
                 pedido.add(pedidos);
             }
-
+            
         } finally {
             if (em != null) {
                 em.close();
@@ -82,7 +85,7 @@ public class CtrlPedido extends CtrlBase {
         }
         return pedido;
     }
-
+    
     public ArrayList<Object> PesquisarStatus(boolean Filtro) {
         ArrayList<Object> pedido = new ArrayList();
         EntityManager em = null;
@@ -95,16 +98,16 @@ public class CtrlPedido extends CtrlBase {
             for (Pedido pedidos : ResultPedido) {
                 pedido.add(pedidos);
             }
-
+            
         } finally {
             if (em != null) {
                 em.close();
             }
         }
-
+        
         return pedido;
     }
-
+    
     public Object Salvar(String medida, BigDecimal peso, Boolean status, Object pessoaOrigem, Object pessoaDestino,
             Object conta, Object mensagens) {
         Pedido pedido = new Pedido(medida, peso, status);
@@ -122,7 +125,7 @@ public class CtrlPedido extends CtrlBase {
         }
         return super.Salvar(pedido);
     }
-
+    
     public Object Alterar(Object oPedido, Integer Id, String medida, BigDecimal peso, Boolean status, Object pessoaOrigem,
             Object pessoaDestino, Object conta, Object mensagens) {
         Pedido pedido = null;
@@ -147,7 +150,7 @@ public class CtrlPedido extends CtrlBase {
         }
         return pedido;
     }
-
+    
     public Object AlterarStatus(Object oPedido, boolean Status) {
         Pedido pedido = null;
         if (oPedido != null && oPedido instanceof Pedido) {
@@ -157,14 +160,48 @@ public class CtrlPedido extends CtrlBase {
         }
         return pedido;
     }
-
+    
     public boolean Remover(Integer Id) {
         return super.Remover(Id) != null;
     }
-
+    
     @Override
     protected void setEntityReference() {
         setEntityReference(Pedido.class);
     }
-
+    
+    public Object AdicionarMensagem(Object pedido, String text, Individuo individuo) {
+        Pedido p = null;
+        if (pedido != null && pedido instanceof Pedido) {
+            return new Transacao() {
+                @Override
+                public Object Transacao(Object... Params) {
+                    Pedido p = (Pedido) pedido;
+                    if (p.getMensagemId() != null) {
+                        if (individuo != null && individuo instanceof Pessoa) {
+                            p.getMensagemId().setDescricao(p.getMensagemId().getDescricao() + "/n" + ((Pessoa) individuo).getEmail() + "\n\n" + text);
+                        } else {
+                            Mensagens mens = new Mensagens();
+                            mens.setDescricao(((Pessoa) individuo).getEmail() + "\n\n" + text);
+                            mens.setPessoaId((Pessoa) individuo);
+                            mens.setPedidoCollection(new ArrayList());
+                            mens.getPedidoCollection().add(p);
+                            p.setMensagemId(mens);
+                        }
+                    }
+                    return p = em.merge(p);
+                }
+            }.Realiza();
+        }
+        return p;
+    }
+    
+    public void CarregarMensagens(Object pedido, JFXTextArea taChat) {
+        Pedido p = null;
+        if (pedido != null && pedido instanceof Pedido) {
+            p = (Pedido) pedido;
+            taChat.setText(p.getMensagemId() != null ? p.getMensagemId().getDescricao() : "");
+        }
+    }
+    
 }

@@ -25,7 +25,6 @@
                                     <HBox alignment="CENTER" spacing="18.0">
                                        <children>
                                           <Label fx:id="txUsuarioInterface" alignment="CENTER_RIGHT" text="Usuario" />
-                                          <Label fx:id="txNivelInterface" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Nivel" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -38,7 +37,11 @@
                               <Label fx:id="opcEditarPerfil" onMouseClicked="#evtEditarPerfil" text="Editar Perfil" />
                               <Label onMouseClicked="#evtPedidos" text="Pedidos" />
                               <Label fx:id="opcSolicitarEntrega" onMouseClicked="#evtSolicitarEntrega" text="Enviar Produtos" />
+
                               <Label onMouseClicked="#evtEfetuarEntrega" text="Efetuar Entrega" />
+
+                              <Label fx:id="opcContato" onMouseClicked="#evtContato" text="Contato" />
+
                               <Label fx:id="opcSair" onMouseClicked="#evtSair" text="Sair" />
                            </children>
                         </VBox>
