@@ -91,7 +91,7 @@ public class PrincipalController implements Initializable {
 
     @FXML
     private void evtSolicitarEntrega(Event event) {
-        /*Variables._secaoPrincipal.push(this.getClass(), "/Interface/Login.fxml");*/
+        Variables._secaoPrincipal.push(this.getClass(), "/Interface/TelaEnviar.fxml");
     }
 
     @FXML

@@ -55,6 +55,19 @@ public abstract class MaskFieldUtil {
             }
         });
     }
+    
+    public static void numerosCasaDecimal(final TextField textField) {
+        textField.lengthProperty().addListener((ChangeListener) new ChangeListener<Number>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                char ch;
+                if (newValue.intValue() > oldValue.intValue() && ((ch = textField.getText().charAt(oldValue.intValue())) < ',' || ch > '9' || ch == '/'|| ch == '-'|| ch == '.')) {
+                    textField.setText(textField.getText().substring(0, textField.getText().length() - 1));
+                }
+            }
+        });
+    }
 
     public static void dateField(final TextField textField) {
         MaskFieldUtil.maxField(textField, 10);
