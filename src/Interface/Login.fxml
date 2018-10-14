@@ -17,12 +17,12 @@
          <center>
             <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXTextField fx:id="txbEmail" labelFloat="true" prefHeight="68.0" prefWidth="252.0" promptText="Email" text="carlos@">
+                  <JFXTextField fx:id="txbEmail" labelFloat="true" prefHeight="68.0" prefWidth="252.0" promptText="Email">
                      <padding>
                         <Insets top="28.0" />
                      </padding>
                   </JFXTextField>
-                  <JFXPasswordField fx:id="txbSenha" labelFloat="true" prefHeight="68.0" prefWidth="252.0" promptText="Password" text="123">
+                  <JFXPasswordField fx:id="txbSenha" labelFloat="true" prefHeight="68.0" prefWidth="252.0" promptText="Password">
                      <padding>
                         <Insets top="28.0" />
                      </padding>
