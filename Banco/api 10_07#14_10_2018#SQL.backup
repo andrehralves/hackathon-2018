@@ -1,0 +1,710 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.2
+-- Dumped by pg_dump version 10.2
+
+-- Started on 2018-10-14 10:10:18
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 1 (class 3079 OID 12278)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2239 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 207 (class 1259 OID 16977)
+-- Name: centrodedistribuicao; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE centrodedistribuicao (
+    centro_id integer NOT NULL,
+    pessoa_id integer NOT NULL,
+    detalhes character varying(255)
+);
+
+
+ALTER TABLE centrodedistribuicao OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 16975)
+-- Name: centrodedistribuicao_centro_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE centrodedistribuicao_centro_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE centrodedistribuicao_centro_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2240 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: centrodedistribuicao_centro_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE centrodedistribuicao_centro_id_seq OWNED BY centrodedistribuicao.centro_id;
+
+
+--
+-- TOC entry 197 (class 1259 OID 16934)
+-- Name: conta; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE conta (
+    conta_id integer NOT NULL,
+    valor_inicial numeric(10,2) NOT NULL,
+    valor_pago numeric(10,2),
+    data_geracao timestamp without time zone NOT NULL,
+    data_pagamento timestamp without time zone
+);
+
+
+ALTER TABLE conta OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 16932)
+-- Name: conta_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE conta_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE conta_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2241 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: conta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE conta_id_seq OWNED BY conta.conta_id;
+
+
+--
+-- TOC entry 203 (class 1259 OID 16961)
+-- Name: mensagens; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE mensagens (
+    mensagem_id integer NOT NULL,
+    pessoa_id integer NOT NULL,
+    descricao character varying(255)
+);
+
+
+ALTER TABLE mensagens OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 16959)
+-- Name: mensagem_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE mensagem_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE mensagem_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2242 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: mensagem_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE mensagem_id_seq OWNED BY mensagens.mensagem_id;
+
+
+--
+-- TOC entry 210 (class 1259 OID 16987)
+-- Name: movimentacao; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE movimentacao (
+    movimentacao_id integer NOT NULL,
+    pedido_id integer NOT NULL,
+    pessoa_motorista_id integer NOT NULL,
+    veiculo_id integer,
+    imagem bytea,
+    centro_id integer
+);
+
+
+ALTER TABLE movimentacao OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 16983)
+-- Name: movimentacao_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE movimentacao_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE movimentacao_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2243 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: movimentacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE movimentacao_id_seq OWNED BY movimentacao.movimentacao_id;
+
+
+--
+-- TOC entry 209 (class 1259 OID 16985)
+-- Name: movimentacao_pedido_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE movimentacao_pedido_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE movimentacao_pedido_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2244 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: movimentacao_pedido_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE movimentacao_pedido_id_seq OWNED BY movimentacao.pedido_id;
+
+
+--
+-- TOC entry 205 (class 1259 OID 16969)
+-- Name: pedido; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pedido (
+    pedido_id integer NOT NULL,
+    pessoa_origem_id integer NOT NULL,
+    pessoa_destino_id integer NOT NULL,
+    medida character varying(255),
+    peso numeric(10,2),
+    status boolean,
+    conta_id integer,
+    mensagem_id integer
+);
+
+
+ALTER TABLE pedido OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 16967)
+-- Name: pedido_pedido_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE pedido_pedido_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE pedido_pedido_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2245 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: pedido_pedido_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE pedido_pedido_id_seq OWNED BY pedido.pedido_id;
+
+
+--
+-- TOC entry 201 (class 1259 OID 16950)
+-- Name: pessoa; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pessoa (
+    pessoa_id integer NOT NULL,
+    nome character varying(72) NOT NULL,
+    email character varying(255) NOT NULL,
+    senha character varying(20) NOT NULL,
+    cep character varying(20) NOT NULL,
+    endereco character varying(255),
+    complemento character varying(255),
+    telefone character varying(20),
+    cnpj character varying(20),
+    cpf character varying(20),
+    imagem bytea,
+    veiculo_id integer
+);
+
+
+ALTER TABLE pessoa OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 16948)
+-- Name: pessoa_pessoa_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE pessoa_pessoa_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE pessoa_pessoa_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2246 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: pessoa_pessoa_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE pessoa_pessoa_id_seq OWNED BY pessoa.pessoa_id;
+
+
+--
+-- TOC entry 199 (class 1259 OID 16942)
+-- Name: veiculo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE veiculo (
+    veiculo_id integer NOT NULL,
+    nome character varying(20) NOT NULL,
+    descricao character varying(255)
+);
+
+
+ALTER TABLE veiculo OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 16940)
+-- Name: veiculo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE veiculo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE veiculo_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2247 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: veiculo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE veiculo_id_seq OWNED BY veiculo.veiculo_id;
+
+
+--
+-- TOC entry 2069 (class 2604 OID 16980)
+-- Name: centrodedistribuicao centro_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY centrodedistribuicao ALTER COLUMN centro_id SET DEFAULT nextval('centrodedistribuicao_centro_id_seq'::regclass);
+
+
+--
+-- TOC entry 2064 (class 2604 OID 16937)
+-- Name: conta conta_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY conta ALTER COLUMN conta_id SET DEFAULT nextval('conta_id_seq'::regclass);
+
+
+--
+-- TOC entry 2067 (class 2604 OID 16964)
+-- Name: mensagens mensagem_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mensagens ALTER COLUMN mensagem_id SET DEFAULT nextval('mensagem_id_seq'::regclass);
+
+
+--
+-- TOC entry 2070 (class 2604 OID 16990)
+-- Name: movimentacao movimentacao_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY movimentacao ALTER COLUMN movimentacao_id SET DEFAULT nextval('movimentacao_id_seq'::regclass);
+
+
+--
+-- TOC entry 2071 (class 2604 OID 16991)
+-- Name: movimentacao pedido_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY movimentacao ALTER COLUMN pedido_id SET DEFAULT nextval('movimentacao_pedido_id_seq'::regclass);
+
+
+--
+-- TOC entry 2068 (class 2604 OID 16972)
+-- Name: pedido pedido_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido ALTER COLUMN pedido_id SET DEFAULT nextval('pedido_pedido_id_seq'::regclass);
+
+
+--
+-- TOC entry 2066 (class 2604 OID 16953)
+-- Name: pessoa pessoa_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pessoa ALTER COLUMN pessoa_id SET DEFAULT nextval('pessoa_pessoa_id_seq'::regclass);
+
+
+--
+-- TOC entry 2065 (class 2604 OID 16945)
+-- Name: veiculo veiculo_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY veiculo ALTER COLUMN veiculo_id SET DEFAULT nextval('veiculo_id_seq'::regclass);
+
+
+--
+-- TOC entry 2229 (class 0 OID 16977)
+-- Dependencies: 207
+-- Data for Name: centrodedistribuicao; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2219 (class 0 OID 16934)
+-- Dependencies: 197
+-- Data for Name: conta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2225 (class 0 OID 16961)
+-- Dependencies: 203
+-- Data for Name: mensagens; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2232 (class 0 OID 16987)
+-- Dependencies: 210
+-- Data for Name: movimentacao; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2227 (class 0 OID 16969)
+-- Dependencies: 205
+-- Data for Name: pedido; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2223 (class 0 OID 16950)
+-- Dependencies: 201
+-- Data for Name: pessoa; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2221 (class 0 OID 16942)
+-- Dependencies: 199
+-- Data for Name: veiculo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2248 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: centrodedistribuicao_centro_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('centrodedistribuicao_centro_id_seq', 1, false);
+
+
+--
+-- TOC entry 2249 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: conta_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('conta_id_seq', 1, false);
+
+
+--
+-- TOC entry 2250 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: mensagem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('mensagem_id_seq', 1, false);
+
+
+--
+-- TOC entry 2251 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: movimentacao_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('movimentacao_id_seq', 1, false);
+
+
+--
+-- TOC entry 2252 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: movimentacao_pedido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('movimentacao_pedido_id_seq', 1, false);
+
+
+--
+-- TOC entry 2253 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: pedido_pedido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('pedido_pedido_id_seq', 1, false);
+
+
+--
+-- TOC entry 2254 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: pessoa_pessoa_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('pessoa_pessoa_id_seq', 1, false);
+
+
+--
+-- TOC entry 2255 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: veiculo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('veiculo_id_seq', 1, false);
+
+
+--
+-- TOC entry 2083 (class 2606 OID 16982)
+-- Name: centrodedistribuicao centrodedistribuicao_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY centrodedistribuicao
+    ADD CONSTRAINT centrodedistribuicao_pk PRIMARY KEY (centro_id);
+
+
+--
+-- TOC entry 2073 (class 2606 OID 16939)
+-- Name: conta conta_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY conta
+    ADD CONSTRAINT conta_pk PRIMARY KEY (conta_id);
+
+
+--
+-- TOC entry 2079 (class 2606 OID 16966)
+-- Name: mensagens mensagens_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mensagens
+    ADD CONSTRAINT mensagens_pk PRIMARY KEY (mensagem_id);
+
+
+--
+-- TOC entry 2085 (class 2606 OID 16996)
+-- Name: movimentacao movimentacao_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY movimentacao
+    ADD CONSTRAINT movimentacao_pk PRIMARY KEY (movimentacao_id);
+
+
+--
+-- TOC entry 2081 (class 2606 OID 16974)
+-- Name: pedido pedido_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT pedido_pk PRIMARY KEY (pedido_id);
+
+
+--
+-- TOC entry 2077 (class 2606 OID 16958)
+-- Name: pessoa pessoa_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pessoa
+    ADD CONSTRAINT pessoa_pk PRIMARY KEY (pessoa_id);
+
+
+--
+-- TOC entry 2075 (class 2606 OID 16947)
+-- Name: veiculo veiculo_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY veiculo
+    ADD CONSTRAINT veiculo_pk PRIMARY KEY (veiculo_id);
+
+
+--
+-- TOC entry 2096 (class 2606 OID 17047)
+-- Name: movimentacao centrodedistribuicao_movimentacao_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY movimentacao
+    ADD CONSTRAINT centrodedistribuicao_movimentacao_fk FOREIGN KEY (centro_id) REFERENCES centrodedistribuicao(centro_id);
+
+
+--
+-- TOC entry 2091 (class 2606 OID 17037)
+-- Name: pedido mensagens_pedido_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT mensagens_pedido_fk FOREIGN KEY (mensagem_id) REFERENCES mensagens(mensagem_id);
+
+
+--
+-- TOC entry 2088 (class 2606 OID 16997)
+-- Name: pedido pagamento_pedido_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT pagamento_pedido_fk FOREIGN KEY (conta_id) REFERENCES conta(conta_id);
+
+
+--
+-- TOC entry 2095 (class 2606 OID 17042)
+-- Name: movimentacao pedido_movimentacao_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY movimentacao
+    ADD CONSTRAINT pedido_movimentacao_fk FOREIGN KEY (pedido_id) REFERENCES pedido(pedido_id);
+
+
+--
+-- TOC entry 2092 (class 2606 OID 17012)
+-- Name: centrodedistribuicao pessoa_centrodedistribuicao_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY centrodedistribuicao
+    ADD CONSTRAINT pessoa_centrodedistribuicao_fk FOREIGN KEY (pessoa_id) REFERENCES pessoa(pessoa_id);
+
+
+--
+-- TOC entry 2087 (class 2606 OID 17032)
+-- Name: mensagens pessoa_mensagens_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mensagens
+    ADD CONSTRAINT pessoa_mensagens_fk FOREIGN KEY (pessoa_id) REFERENCES pessoa(pessoa_id);
+
+
+--
+-- TOC entry 2094 (class 2606 OID 17027)
+-- Name: movimentacao pessoa_movimentacao_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY movimentacao
+    ADD CONSTRAINT pessoa_movimentacao_fk FOREIGN KEY (pessoa_motorista_id) REFERENCES pessoa(pessoa_id);
+
+
+--
+-- TOC entry 2089 (class 2606 OID 17017)
+-- Name: pedido pessoa_pedido_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT pessoa_pedido_fk FOREIGN KEY (pessoa_origem_id) REFERENCES pessoa(pessoa_id);
+
+
+--
+-- TOC entry 2090 (class 2606 OID 17022)
+-- Name: pedido pessoa_pedido_fk1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT pessoa_pedido_fk1 FOREIGN KEY (pessoa_destino_id) REFERENCES pessoa(pessoa_id);
+
+
+--
+-- TOC entry 2093 (class 2606 OID 17007)
+-- Name: movimentacao veiculo_movimentacao_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY movimentacao
+    ADD CONSTRAINT veiculo_movimentacao_fk FOREIGN KEY (veiculo_id) REFERENCES veiculo(veiculo_id);
+
+
+--
+-- TOC entry 2086 (class 2606 OID 17002)
+-- Name: pessoa veiculo_pessoa_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pessoa
+    ADD CONSTRAINT veiculo_pessoa_fk FOREIGN KEY (veiculo_id) REFERENCES veiculo(veiculo_id);
+
+
+-- Completed on 2018-10-14 10:10:18
+
+--
+-- PostgreSQL database dump complete
+--
+
